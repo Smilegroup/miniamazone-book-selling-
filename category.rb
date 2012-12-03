@@ -50,6 +50,20 @@ class Category
 	 	puts @@categoryList
 	end
 
+	def self.category_delete(category_name)
+
+		@@categoryList.delete(category_name)	
+		puts "selected category deleted successfully"	
+
+	end
+	def book_delete(book_name)
+		
+		@booklist.delete(book_name)	
+		puts "selected book deleted successfully"	
+
+	end
+
+
 	
 
 end
