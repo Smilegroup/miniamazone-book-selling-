@@ -4,26 +4,21 @@
 
 class Book
 	attr_accessor :isbn, :title, :author, :price
-	@@booklist=[]
+	
 
 	def initialize(option={})
 		@isbn=option[:isbn]
 		@title=option[:title]
 		@author=option[:author]
 		@price=option[:price]
-		@@booklist.push(option[:title])
+		
 	end
 
-	def display()
-		puts "isbn:"+@isbn
-		puts "title:"+@title
-		puts "price:"+@price
-		puts "author:"+@author
+	def display
+		puts "isbn:"+@isbn+"\t title:"+@title+"\t price:"+@price+"\t author:"+@author
 	end
 
-	def self.booklist
-		puts @@booklist
-	end
+	
 end
 
 class Category
@@ -49,19 +44,22 @@ class Category
 		
 
 	 end
-	 def price_lessthanten
+	 def price_lessthan(value)
 		book_list=[]
+
 		
 		@booklist.each do
 			|book| 
-			if book[1]<10
+			if book[1]< value
+				
 				book_list.push([book[0],book[1]])
+				
 			end
-		
-
 		end
+
 		
-		if book_list
+		
+		if !book_list
 			puts "no books to display"
 		else
 		puts book_list
@@ -81,27 +79,21 @@ end
 
 
 science=Book.new({:isbn=>"123",:title=>"science",:author=>"1",:price=>"9"})
- #book.display()
+ science.display()
 
 math=Book.new({:isbn=>"1234",:title=>"math",:author=>"hkdjfguyd",:price=>"337"})
-english=Book.new({:isbn=>"1234",:title=>"english",:author=>"hkdjfguyd",:price=>"337"})
+english=Book.new({:isbn=>"1234",:title=>"english",:author=>"hkdjfguyd",:price=>"5"})
+nepali=Book.new({:isbn=>"4",:title=>"nepali",:author=>"hkdjfguyd",:price=>"8"})
 
-Book.booklist
+
 engineering=Category.new("engineering")
 arts=Category.new("arts")
 commerce=Category.new("commerce")
+arts.addbook(nepali)
+arts.addbook(math)
+arts.addbook(english)
 
 Category.category_list
-
-engineering.addbook(math)
-arts.addbook(english)
-commerce.addbook(math)
-commerce.addbook(english)
-engineering.addbook(science)
-puts "this is books of commerce"
-commerce.view_book
-puts "this is books of arts"
 arts.view_book
-puts "this is books of engineering"
-engineering.view_book
-arts.price_lessthanten
+arts.price_lessthan(10)
+
