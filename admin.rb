@@ -1,62 +1,67 @@
-class Admin
-	attr_reader :category_name, :list
 
-			def add(list)
-			@list=list
-			answer="yes";
-					until answer=="no" do
-					puts "enter new book name"
-					new_element=gets
-					@list.push("#{new_element}")
-					puts "more list(yes/no)?"
-					answer=gets.chomp
-					end
 
-			end
 
-			def show(list)
-					if @list==nil
 
-					 @list=list
-					end
-				puts @list
+class Book
+	attr_accessor :isbn, :title, :author, :price
+	@@booklist=[]
 
-			end
+	def initialize(option={})
+		@isbn=option[:isbn]
+		@title=option[:title]
+		@author=option[:author]
+		@price=option[:price]
+		@@booklist.push(option[:title])
+	end
 
-			def delete(list)
-				if @list==nil
-					
-					@list=list
+	def display()
+		puts "isbn:"+@isbn
+		puts "title:"+@title
+		puts "price:"+@price
+		puts "author:"+@author
+	end
 
-				end
+	def self.booklist
+		puts @@booklist
+	end
+end
 
-				puts @list 
+class Category
+	attr_accessor :name
+	@@categoryList=[]
+	@booklist=[]
 
-				puts "name of book to delete:"
-				name=gets.chomp
-				@list.delete("#{name}")
+	def initialize(name)
+		@name=name
+		@@categoryList.push(name)
+	end
 
-			end
+	# def addbook(book_object)
+	# 	@booklist.push(book_object.title)
+
+	# end
+
+	# def view_book(name){
+
+
+
+	# }
+	 def self.category_list
+	 	puts @@categoryList
+	end
+
+	
 
 end
 
-	category_array=["engineering","Arts","Commerce"]
-	admin=Admin.new
-	begin
-		puts "a. Show book list\nb.Add new book\nc.delete existing book\nenter options(a,b or c)"
-		ans=gets.chomp;
 
-		case ans
-				when "a"
-				  admin.show(category_array)
-				when "b"
-				  admin.add(category_array)
-				when "c"
-				   admin.delete(category_array)
-				else
-				  puts "wrong input!"
-				end
-		puts "more options:(y/n)"
-		ans=gets.chomp
-	end while ans=="y"
+book=Book.new({:isbn=>"123",:title=>"12",:author=>"1",:price=>"3fdfr"})
+ #book.display()
 
+book1=Book.new({:isbn=>"1234",:title=>"math",:author=>"hkdjfguyd",:price=>"337"})
+
+Book.booklist
+cat=Category.new("engineering")
+cat1=Category.new("arts")
+
+Category.category_list
