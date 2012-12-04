@@ -33,6 +33,14 @@ class Category
 	 end
 	 def price_lessthan(value)
 		count=0
+		@booklist.each do
+			|book| 
+			if book[1]< value
+				count=count+1
+				break
+			end
+		end
+		if count > 0
 		puts "\nBOOKS IN SELECTED CATEGORY WITH PRICE LESS THAN #{value}"
 		puts "....................................................."
 		puts "\tTitle\t\tPrice"
@@ -42,7 +50,7 @@ class Category
 			if book[1]< value
 				puts "\t#{book[0]}\t\t#{book[1]}"
 				#book_list.push([book[0],book[1]])
-				count=count+1
+				
 				
 				
 			end
@@ -50,8 +58,8 @@ class Category
 
 		
 		
-		if count==0
-			puts "NO BOOKS TO DISPLAY IN SELECTED CATEGORY"
+		else
+			puts "NO BOOKS TO DISPLAY IN SELECTED CATEGORY WITH PRICE LESS THAN #{value}"
 		end
 		
 

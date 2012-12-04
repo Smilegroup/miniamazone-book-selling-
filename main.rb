@@ -2,7 +2,7 @@ require 'book'
 require 'category'
 require 'buyer'
 #creating book and its details
-science=Book.new({:isbn=>"s1",:title=>"science",:author=>"Susan",:price=>"9"})
+science=Book.new({:isbn=>"s1",:title=>"science",:author=>"Susan",:price=>"12"})
 
 # creating new category
 engineering=Category.new("engineering")
@@ -22,7 +22,7 @@ engineering.addbook(science)
 Buyer.buyer_viewinfo
 #view all book
 Book.display_all_books
-engineering.price_lessthan(10)
+engineering.price_lessthan(14)
 
 Book.book_delete("science")
 Book.display_all_books
