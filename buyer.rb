@@ -1,16 +1,22 @@
 
-class Buyer
+class Buyer < Book
 	attr_accessor :buyer_name, :cc_no , :address, :book_name
 	@@info=[]
 	@@count=0
 	def initialize(option={})
-	 
+	    @@book_list.each do |check|
+	    	if check.title!=option[:book_name]
+	    		puts "Books Not In List"
+	    	else
+	   
 		@buyer_name=option[:buyer_name]
 		@cc_no=option[:cc_no]
 		@address=option[:address]
 		@book_name=option[:book_name]
 		@@count=@@count+1
 		@@info.push(self)
+			end
+		 end
 	
 		
 	end

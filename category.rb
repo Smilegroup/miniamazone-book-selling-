@@ -62,7 +62,7 @@ class Category
 		puts "\nLIST OF BOOK CATEGORIES"
 		puts "......................."
 		count=1
-			@@categoryList.sort.each do |list| 
+			@@categoryList.each do |list| 
 			
 			puts "\t#{count}.#{list.name}"
 			count=count+1
