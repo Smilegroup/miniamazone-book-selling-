@@ -10,15 +10,30 @@ nepali=Book.new({:isbn=>"s4",:title=>"nepali",:author=>"Pradeep",:price=>"8"})
 engineering=Category.new("engineering")
 arts=Category.new("arts")
 commerce=Category.new("commerce")
+
+#View list of category
+Category.category_list
 #add book to category
 engineering.addbook(science)
+engineering.addbook(math)
+
 
 #buy book
  Buyer.new({:buyer_name=>"nikita",:cc_no=>"2424",:address=>"gaushala",:book_name=>"apple"})
 Buyer.new({:buyer_name=>"nikita",:cc_no=>"2424",:address=>"gaushala",:book_name=>"apple"})
 
 #view buyer informations
-Buyer.viewinfo
+Buyer.buyer_viewinfo
 #view all book
 Book.display_all_books
-Book.price_lessthan(10)
+engineering.price_lessthan(10)
+
+Book.book_delete("science")
+Book.display_all_books
+
+
+engineering.category_book_delete("math")
+engineering.category_view_book
+
+
+

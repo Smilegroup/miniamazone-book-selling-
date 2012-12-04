@@ -12,11 +12,12 @@ class Book
 
 
 	def self.display_all_books
-		puts "Book List"
-		puts "isbn\t\ttitle\t\tprice($)\t\tauthor"
-		puts "----\t\t-----\t\t--------\t\t------"
+		puts "\nList OF All BOOKS"
+		puts "................."
+		puts "\tIsbn\t\tTitle\t\tPrice($)\t\tAuthor"
+		puts "\t----\t\t-----\t\t--------\t\t------"
 		@@book_list.each do |book|
-			puts "#{book.isbn}\t\t#{book.title}\t\t#{book.price}\t\t\t#{book.author}"
+			puts "\t#{book.isbn}\t\t#{book.title}\t\t#{book.price}\t\t\t#{book.author}"
 			
 		end
 	end
@@ -24,15 +25,16 @@ class Book
 	def self.price_lessthan(value)
 
 
-		puts "Book-list with price less than #{value}($)"
-		puts "isbn\t\ttitle\t\tprice($)\t\tauthor"
-		puts "----\t\t-----\t\t--------\t\t------"
+		puts "\nBOOK-LIST WITH PRICE LESS THAN ($).#{value}"
+		puts ".........................................."
+		puts "\tIsbn\t\tTitle\t\tPrice($)\t\tAuthor"
+		puts "\t----\t\t-----\t\t--------\t\t------"
 		
 		@@book_list.each do
 			|book| 
 			if book.price.to_i< value
 				
-				puts "#{book.isbn}\t\t#{book.title}\t\t#{book.price}\t\t\t#{book.author}"
+				puts "\t#{book.isbn}\t\t#{book.title}\t\t#{book.price}\t\t\t#{book.author}"
 
 				
 				
@@ -42,7 +44,26 @@ class Book
 		
 	end
 
+	def self.book_delete(book_name)
+		index=0
+		
+		@@book_list.each do
+			|book| 
 
+				if book.title == book_name
+				
+				@@book_list.delete_at(index)
+				
+				puts "\n#{book_name} book deleted successfully"	
+			end
+			index=index+1
+				
+				
+		
+		
+		end
+
+	end
 
 	
 end
